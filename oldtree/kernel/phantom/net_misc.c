@@ -16,7 +16,7 @@
 
 #define DEBUG_MSG_PREFIX "net.misc"
 #include <debug_ext.h>
-#define debug_level_flow 10
+#define debug_level_flow 0
 #define debug_level_error 10
 #define debug_level_info 10
 
@@ -461,7 +461,7 @@ errno_t net_curl( const char *url, char *obuf, size_t obufsize, const char *head
     while(1)
     {
         //nread = read( sock, buf, sizeof(buf)-1 ); // , &addr, SOCK_FLAG_TIMEOUT, 1000L*1000*50
-        nread = tcp_recvfrom( prot_data, buf, sizeof(buf)-1, &addr, SOCK_FLAG_TIMEOUT, 1000L*1000*50 );
+        nread = tcp_recvfrom( prot_data, buf, sizeof(buf)-1, &addr, SOCK_FLAG_TIMEOUT, 1000L*1000*5 );
         buf[sizeof(buf)-1] = 0;
         
         printf("TCP - read = %d\n", nread );
