@@ -899,8 +899,12 @@ void pvm_internal_init_window(pvm_object_t os)
 {
     struct data_area_4_window      *da = (struct data_area_4_window *)os->da;
 
+    int temp_win_x_size = 681;
+    int temp_win_y_size = 489;
+
     //pvm_object_t bin = pvm_create_binary_object( PVM_MAX_TTY_PIXELS * 4 + sizeof(drv_video_window_t), 0 );
-    pvm_object_t bin = pvm_create_binary_object( drv_video_window_bytes( PVM_DEF_TTY_XSIZE, PVM_DEF_TTY_YSIZE ) + sizeof(drv_video_window_t), 0 );
+    // pvm_object_t bin = pvm_create_binary_object( drv_video_window_bytes( PVM_DEF_TTY_XSIZE, PVM_DEF_TTY_YSIZE ) + sizeof(drv_video_window_t), 0 );
+    pvm_object_t bin = pvm_create_binary_object( drv_video_window_bytes( temp_win_x_size, temp_win_y_size ) + sizeof(drv_video_window_t), 0 );
     da->o_pixels = bin;
 
     struct data_area_4_binary *bda = (struct data_area_4_binary *)bin->da;
@@ -917,8 +921,9 @@ void pvm_internal_init_window(pvm_object_t os)
 
     //lprintf("pvm_internal_init_window w %p pix %p\n", &(da->w), pixels );
 
-    drv_video_window_init( &(da->w), pixels, PVM_DEF_TTY_XSIZE, PVM_DEF_TTY_YSIZE, 100, 100, da->bg, WFLAG_WIN_DECORATED, da->title );
-
+    // drv_video_window_init( &(da->w), pixels, PVM_DEF_TTY_XSIZE, PVM_DEF_TTY_YSIZE, 100, 100, da->bg, WFLAG_WIN_DECORATED, da->title );
+    drv_video_window_init( &(da->w), pixels, temp_win_x_size, temp_win_y_size, 100, 100, da->bg, WFLAG_WIN_DECORATED, da->title );
+ 
     {
     pvm_object_t o;
     o = os;
