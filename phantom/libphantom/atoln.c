@@ -12,7 +12,7 @@ atoln(const char *str, size_t n)
     if( n > (sizeof(buf) - 1) )
         n = sizeof(buf) - 1;
 
-    strlcpy( buf, str, n );
+    strlcpy( buf, str, n + 1 );
 
     return(strtol(buf, (char **)0, 10));
 }

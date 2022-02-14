@@ -610,6 +610,9 @@ static int si_string_16_toint( pvm_object_t me, pvm_object_t *ret, struct data_a
     CHECK_PARAM_COUNT(0);
 
     struct data_area_4_string *meda = pvm_object_da( me, string );
+
+    printf("!!! : STR to INT: '%s' (%d) [%d]\n", meda->data, meda->length, atoin( (char *)meda->data, meda->length ));
+
     SYSCALL_RETURN(pvm_create_int_object( atoin( (char *)meda->data, meda->length ) ) );
 }
 
