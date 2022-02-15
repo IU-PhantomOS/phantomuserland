@@ -75,6 +75,7 @@ class weather
 			console.putws("Weather win: curl\n");
             
             json_string = http.curl( "http://192.168.31.231:80/weather", "" );
+            json = json_string.parseJson();
 
 			console.putws(json_string);
 			console.putws(json_string);       

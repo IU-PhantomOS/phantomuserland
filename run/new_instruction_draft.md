@@ -87,6 +87,10 @@ pip install -r requirements.txt
 sudo -HE env PATH=$PATH PYTHONPATH=$PYTHONPATH python app.py
 ```
 
+Then copy the IP adress from the server's log output and if it is not the same as in the script, change this line in `/plib/sys/src/ru.dz/ru.dz.demo.weather.ph`
+
+`json_string = http.curl( "http://<YOUR_IP>:80/weather", "" );`
+
 And, finally, the system can be run inside it
 
 ```bash
