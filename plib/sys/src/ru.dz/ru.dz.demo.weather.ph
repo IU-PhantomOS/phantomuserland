@@ -74,7 +74,8 @@ class weather
 
 			console.putws("Weather win: curl\n");
             
-            json_string = http.curl( "http://192.168.31.231:80/weather", "" );
+            // 10.0.2.15 is a default address for the host
+            json_string = http.curl( "http://10.0.2.15:80/weather", "" );
             json = json_string.parseJson();
 
 			console.putws(json_string);
